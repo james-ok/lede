@@ -920,8 +920,10 @@ jobs:
         run: |
           rm -rf ./artifact/
           mkdir -p ./artifact/
-          find ./bin/targets/ -name "*combined*img*" | xargs -i mv -f {} ./artifact/
-          find ./bin/targets/ -name "*sysupgrade*bin*" | xargs -i mv -f {} ./artifact/
+          # 将target下所有文件移动到artifact文件夹下
+          mv ./bin/targets/ ./artifact/
+          # find ./bin/targets/ -name "*combined*img*" | xargs -i mv -f {} ./artifact/
+          # find ./bin/targets/ -name "*sysupgrade*bin*" | xargs -i mv -f {} ./artifact/
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
